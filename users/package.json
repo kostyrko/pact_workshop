@@ -1,0 +1,21 @@
+{
+  "name": "provider",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "app": "node server.js",
+    "tests": "jest __tests__/ --runInBand --force-exit"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@pact-foundation/pact": "^9.17.2",
+    "body-parser": "^1.19.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "jest": "^27.4.7",
+    "npm-start": "^1.4.2",
+    "path": "^0.12.7"
+  }
+}
