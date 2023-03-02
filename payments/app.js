@@ -1,19 +1,22 @@
 const axios = require('axios');
+const dotevn = require('dotenv');
 
-const providerURL = "http://localhost:8081";
+dotevn.config();
+
+const providerURL = `http://localhost:${process.env.PORT}`;
 
 const getCreditCardNo = async () => {
-    const userPayload = await getUserByName('Joe');
-    return userPayload.data.creditCardNo
+  const userPayload = await getUserByName('Joe');
+  return userPayload.data.creditCardNo;
 };
 
 const offerDiscountToActiveUsers = async () => {
-    const userPayload = await getActiveUsers();
+  const userPayload = await getActiveUsers();
 
-    // ...
-    const userIds = userPayload.data.map(user => user.id);
-    console.log(userIds)
-    return userIds
+  // ...
+  const userIds = userPayload.data.map((user) => user.id);
+  console.log(userIds);
+  return userIds;
 };
 
 const getUserByName = async (name) => {
@@ -22,13 +25,13 @@ const getUserByName = async (name) => {
   const resp = await axios
     .get(userByNameEndpoint)
     .then((res) => {
-        return res
+      return res;
     })
     .catch((err) => {
-      return err.res
+      return err.res;
     });
 
-    return resp
+  return resp;
 };
 
 const getActiveUsers = async () => {
@@ -36,16 +39,16 @@ const getActiveUsers = async () => {
   const resp = await axios
     .get(usersEndpoint)
     .then((res) => {
-        return res
+      return res;
     })
     .catch((err) => {
-      return err.res
+      return err.res;
     });
 
-    return resp
+  return resp;
 };
 
 module.exports = {
-    getCreditCardNo,
-    offerDiscountToActiveUsers
+  getCreditCardNo,
+  offerDiscountToActiveUsers,
 };

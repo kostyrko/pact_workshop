@@ -1,31 +1,20 @@
-const path = require("path")
-const { Verifier } = require("@pact-foundation/pact");
-const { server } = require("../app");
+const path = require('path');
+const { Verifier } = require('@pact-foundation/pact');
+const { server } = require('../src/app');
+const opts = require('./config');
+const dotenv = require('dotenv');
 
-const PROVIDER_URL = "http://localhost:8081";
+dotenv.config();
 
-server.listen(8081, () => {
-    console.log(`Users Service listening on ${PROVIDER_URL}`)
+server.listen(process.env.PORT, () => {
+  console.log(`Users Service listening on ${process.env.PORT}`);
 });
 
-describe("Users Service Verification", () => {
-    it("validates the expectations of Payments Service", () => {
-        let opts = {
-            provider: "Users Service",
-            logLevel: "DEBUG",
-            providerBaseUrl: PROVIDER_URL,
-            pactUrls: [path.resolve(process.cwd(), "../payments/__tests__/pact/contracts/paymentsservice-usersservice.json")],
-            // pactUrls: ['http://localhost:8080/pacts/provider/UsersService/consumer/PaymentsService/latest'],
-            consumerVersionTags: ["dev"],
-            providerVersionTagS: ["dev"],
-            publishVerificationResult: false,
-            // publishVerificationResult: true,
-            providerVersion: "1.0.0"
-        };
-        return new Verifier(opts).verifyProvider().then(output => {
-            console.log("Pact Verification Complete!");
-            console.log(output);
-        })
-    })
+describe('Users Service Verification', () => {
+  it('validates the expectations of Payments Service', () => {
+    return new Verifier(opts).verifyProvider().then((output) => {
+      console.log('Pact Verification Complete!');
+      console.log(output);
+    });
+  });
 });
-

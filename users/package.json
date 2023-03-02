@@ -13,6 +13,7 @@
     "@pact-foundation/pact": "^9.17.2",
     "body-parser": "^1.19.1",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.17.2",
     "jest": "^27.4.7",
     "npm-start": "^1.4.2",

@@ -14,13 +14,14 @@
   "dependencies": {
     "@pact-foundation/pact": "^9.17.2",
     "axios": "^0.25.0",
+    "dotenv": "^16.0.3",
     "jest": "^27.4.7",
     "path": "^0.12.7",
     "run-func": "^1.0.5"
   },
   "jest": {
-      "testPathIgnorePatterns": [
-        "<rootDir>/__tests__/pact/"
+    "testPathIgnorePatterns": [
+      "<rootDir>/__tests__/pact/"
     ]
   }
 }
