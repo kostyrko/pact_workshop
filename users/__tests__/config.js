@@ -3,11 +3,11 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const PROVIDER_URL = `http://localhost:${process.env.PORT}`;
+const PROVIDER_URL = `http://localhost:${process.env.PROVIDER_PORT}`;
 
 let opts = {
   provider: 'Users Service',
-  logLevel: 'DEBUG',
+  logLevel: 'INFO',
   providerBaseUrl: PROVIDER_URL,
   pactUrls: [
     path.resolve(

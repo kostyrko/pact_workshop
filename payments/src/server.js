@@ -2,8 +2,8 @@ const { server } = require('./app');
 const dotevn = require('dotenv');
 dotevn.config();
 
-port = process.env.PROVIDER_PORT;
+const port = process.env.CONSUMER_PORT;
 
 server.listen(port, () => {
-  console.log(`Users service running on http://localhost:${port}`);
+  console.log(`Payments service running on http://localhost:${port}`);
 });

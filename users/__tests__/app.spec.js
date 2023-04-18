@@ -6,8 +6,10 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-server.listen(process.env.PORT, () => {
-  console.log(`Users Service listening on ${process.env.PORT}`);
+port = process.env.PROVIDER_PORT;
+
+server.listen(port, () => {
+  console.log(`Users Service listening on ${port}`);
 });
 
 describe('Users Service Verification', () => {

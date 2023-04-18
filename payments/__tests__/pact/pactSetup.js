@@ -1,7 +1,9 @@
 const path = require('path');
 const Pact = require('@pact-foundation/pact').Pact;
+const dotevn = require('dotenv');
+dotevn.config();
 
-global.port = 4444;
+global.port = Number(process.env.PROVIDER_PORT);
 global.provider = new Pact({
   port: global.port,
   log: path.resolve(process.cwd(), '__tests__/pact/logs', 'logs-pact.log'),
@@ -11,4 +13,5 @@ global.provider = new Pact({
   pactfile_write_mode: 'overwrite',
   consumer: 'PaymentsService',
   provider: 'UsersService',
+  host: 'localhost',
 });

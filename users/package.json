@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "app": "node server.js",
+    "app": "node src/server.js",
     "tests": "jest __tests__/ --runInBand --force-exit"
   },
   "author": "",

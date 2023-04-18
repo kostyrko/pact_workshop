@@ -1,4 +1,9 @@
-const { getCreditCardNo, offerDiscountToActiveUsers } = require('../app');
+const dotevn = require('dotenv');
+const { server } = require('../src/app');
+const supertest = require('supertest');
+const request = supertest(server);
+
+dotevn.config();
 
 describe('Consumer Service', () => {
   beforeAll(() => provider.setup());
@@ -6,13 +11,14 @@ describe('Consumer Service', () => {
   afterAll(() => provider.finalize());
 
   describe('GET credit card number', () => {
-    const mocked_body = {
+    const expected_resp = {
       id: 1,
       name: 'Joe',
       age: 29,
       creditCardNo: 4012888888881881,
       status: 'Active',
     };
+
     beforeEach(() => {
       const interaction = {
         state: 'Provider has a list of users',
@@ -23,15 +29,15 @@ describe('Consumer Service', () => {
         },
         willRespondWith: {
           status: 200,
-          body: mocked_body,
+          body: expected_resp,
         },
       };
       return provider.addInteraction(interaction);
     });
 
     test('get credit card number', async () => {
-      const creditCardNo = await getCreditCardNo();
-      expect(creditCardNo).toEqual(4012888888881881);
+      const res = await request.get('/creditCardNo');
+      expect(res.body.credictCardNo).toEqual(4012888888881881);
     });
   });
 
@@ -77,8 +83,8 @@ describe('Consumer Service', () => {
     });
 
     test('payments expects a single user matching the specified name', async () => {
-      const ids = await offerDiscountToActiveUsers();
-      expect(ids).toEqual([1, 2, 3]);
+      const res = await request.get('/promoCodes');
+      expect(res.body.length).toEqual(3);
     });
   });
 });
