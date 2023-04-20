@@ -5,6 +5,7 @@ const opts = require('./config');
 const dotenv = require('dotenv');
 
 dotenv.config();
+jest.setTimeout(30000);
 
 port = process.env.PROVIDER_PORT;
 

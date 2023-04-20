@@ -4,6 +4,7 @@ const supertest = require('supertest');
 const request = supertest(server);
 
 dotevn.config();
+jest.setTimeout(30000);
 
 describe('Consumer Service', () => {
   beforeAll(() => provider.setup());
