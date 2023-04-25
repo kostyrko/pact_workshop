@@ -5,6 +5,7 @@ const users = [
   {
     id: 1,
     name: 'Joe',
+    surname: 'Smith',
     age: 29,
     creditCardNo: 4012888888881881,
     status: 'Active',
@@ -12,6 +13,7 @@ const users = [
   {
     id: 2,
     name: 'Mary',
+    surname: 'John',
     age: 20,
     creditCardNo: 4929196450883554,
     status: 'Active',
@@ -19,6 +21,7 @@ const users = [
   {
     id: 3,
     name: 'Peter',
+    surname: 'Jones',
     age: 55,
     creditCardNo: 6011622246624154,
     status: 'Active',
@@ -26,6 +29,7 @@ const users = [
   {
     id: 4,
     name: 'Helen',
+    surname: 'Smith',
     age: 35,
     creditCardNo: 6011622246624154,
     status: 'Deactivated',
